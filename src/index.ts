@@ -12,14 +12,16 @@ app.post("/films", (req, res)=> {
     return res.send("CREATE FILM")
 })
 
-app.put("/films", (req, res)=> {
+app.put("/films/:id", (req, res)=> {
+    const filmsId = req.params.id 
 
-    return res.send("UPDATE FILM")
+    return res.send("UPDATE FILM "+ filmsId)
 })
 
-app.delete("/films", (req, res)=> {
+app.delete("/films/:id", (req, res)=> {
+    const filmsId = req.params.id
 
-    return res.send("DELETE FILM")
+    return res.send("DELETE FILM " + filmsId)
 })
 
 app.listen(4000, () =>{
