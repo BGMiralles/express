@@ -1,25 +1,29 @@
 import { Request, Response } from "express";
 
-
-
 const getFilms = (req: Request, res: Response) => {
-    return res.send("Get films");
-}
+  return res.send("Get films");
+};
 
 const createFilm = (req: Request, res: Response) => {
-    return res.send("CREATE FILM");
-  }
+  return res.send("CREATE FILM");
+};
 
 const updateFilmById = (req: Request, res: Response) => {
-    const filmsId = req.params.id;
-  
-    return res.send("UPDATE FILM " + filmsId);
-  }
+  const filmsId = req.params.id;
+
+  return res.send("UPDATE FILM " + filmsId);
+};
 
 const deleteFilmById = (req: Request, res: Response) => {
-    const filmsId = req.params.id;
-  
-    return res.send("DELETE FILM " + filmsId);
-  }
+  const filmsId = req.params.id;
 
-export {getFilms, createFilm, updateFilmById, deleteFilmById}
+  return res.send("DELETE FILM " + filmsId);
+};
+
+const getFilmsbyId = (req: Request, res: Response) => {
+    const filmsId = req.params.id
+
+    return res.send(`Get film id${filmsId}`)
+}
+
+export { getFilms, createFilm, updateFilmById, deleteFilmById, getFilmsbyId};

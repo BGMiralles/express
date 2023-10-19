@@ -1,11 +1,18 @@
 import { Router } from "express";
-import { getFilms, createFilm, updateFilmById, deleteFilmById} from "../controllers/filmsController"
+import {
+  getFilms,
+  createFilm,
+  updateFilmById,
+  deleteFilmById,
+  getFilmsbyId
+} from "../controllers/filmsController";
 
 const routerFilms = Router();
 
-routerFilms.get("/", getFilms) 
-routerFilms.post("/", createFilm)
-routerFilms.put("/:id", updateFilmById)
-routerFilms.delete("/:id", deleteFilmById)
+routerFilms.get("/", getFilms);
+routerFilms.post("/", createFilm);
+routerFilms.put("/:id", updateFilmById);
+routerFilms.delete("/:id", deleteFilmById);
+routerFilms.get("/", getFilmsbyId)
 
 export { routerFilms };
