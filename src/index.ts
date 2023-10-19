@@ -5,7 +5,7 @@ const app = express();
 
 const PORT = process.env.PORT || 4000;
 
-app.use("/", routerFilms);
+app.use("/films", routerFilms);
 
 app.listen(PORT, () => {
   console.log(`Server running ${PORT}`);

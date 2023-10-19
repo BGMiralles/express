@@ -1,22 +1,21 @@
 import { Router } from "express";
+import { getFilms} from "../controllers/filmsController"
 
 const routerFilms = Router();
 
-routerFilms.get("/films", (req, res) => {
-  return res.send("Get films");
-});
+routerFilms.get("/", getFilms) 
 
-routerFilms.post("/films", (req, res) => {
+routerFilms.post("/", (req, res) => {
   return res.send("CREATE FILM");
 });
 
-routerFilms.put("/films/:id", (req, res) => {
+routerFilms.put("/:id", (req, res) => {
   const filmsId = req.params.id;
 
   return res.send("UPDATE FILM " + filmsId);
 });
 
-routerFilms.delete("/films/:id", (req, res) => {
+routerFilms.delete("/:id", (req, res) => {
   const filmsId = req.params.id;
 
   return res.send("DELETE FILM " + filmsId);
