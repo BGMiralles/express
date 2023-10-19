@@ -1,13 +1,10 @@
 import { Router } from "express";
-import { getFilms} from "../controllers/filmsController"
+import { getFilms, createFilm} from "../controllers/filmsController"
 
 const routerFilms = Router();
 
 routerFilms.get("/", getFilms) 
-
-routerFilms.post("/", (req, res) => {
-  return res.send("CREATE FILM");
-});
+routerFilms.post("/", createFilm)
 
 routerFilms.put("/:id", (req, res) => {
   const filmsId = req.params.id;
