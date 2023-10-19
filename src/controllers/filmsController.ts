@@ -16,4 +16,10 @@ const updateFilmById = (req: Request, res: Response) => {
     return res.send("UPDATE FILM " + filmsId);
   }
 
-export {getFilms, createFilm, updateFilmById}
+const deleteFilmById = (req: Request, res: Response) => {
+    const filmsId = req.params.id;
+  
+    return res.send("DELETE FILM " + filmsId);
+  }
+
+export {getFilms, createFilm, updateFilmById, deleteFilmById}
