@@ -1,7 +1,10 @@
 import { Request, Response } from "express";
+import { Film } from "../models/Film";
 
-const getFilms = (req: Request, res: Response) => {
-  return res.send("Get films");
+const getFilms = async(req: Request, res: Response) => {
+  const films = await Film.find();
+
+  return res.send(films);
 };
 
 const createFilm = (req: Request, res: Response) => {
