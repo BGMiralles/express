@@ -1,15 +1,28 @@
 import { Request, Response } from "express";
 import { Film } from "../models/Film";
 
-const getFilms = async(req: Request, res: Response) => {
-  const films = await Film.find();
+const getFilms = async (req: Request, res: Response) => {
+  try {
+    const films = await Film.find();
 
   return res.send(films);
+  } catch (error) {
+    return res.send(error)
+  }
 };
 
-const createFilm = (req: Request, res: Response) => {
+const createFilm = async (req: Request, res: Response) => {
   console.log(req.body);
-  return res.send("CREATE FILM");
+  try {
+    const newFilm = await Film.create({
+      title: req.body.title,
+      director: req.body.director,
+    }).save();
+
+    return res.send(newFilm);
+  } catch (error) {
+    return res.send(error);
+  }
 };
 
 const updateFilmById = (req: Request, res: Response) => {
