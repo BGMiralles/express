@@ -5,6 +5,7 @@ const getFilms = (req: Request, res: Response) => {
 };
 
 const createFilm = (req: Request, res: Response) => {
+  console.log(req.body);
   return res.send("CREATE FILM");
 };
 
@@ -21,9 +22,9 @@ const deleteFilmById = (req: Request, res: Response) => {
 };
 
 const getFilmsbyId = (req: Request, res: Response) => {
-    const filmsId = req.params.id
+  const filmsId = req.params.id;
 
-    return res.send(`Get film id${filmsId}`)
-}
+  return res.send(`Get film id${filmsId}`);
+};
 
-export { getFilms, createFilm, updateFilmById, deleteFilmById, getFilmsbyId};
+export { getFilms, createFilm, updateFilmById, deleteFilmById, getFilmsbyId };

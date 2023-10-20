@@ -13,6 +13,6 @@ routerFilms.get("/", getFilms);
 routerFilms.post("/", createFilm);
 routerFilms.put("/:id", updateFilmById);
 routerFilms.delete("/:id", deleteFilmById);
-routerFilms.get("/", getFilmsbyId)
+routerFilms.get("/:id", getFilmsbyId)
 
 export { routerFilms };
