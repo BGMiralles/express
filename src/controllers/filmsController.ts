@@ -28,17 +28,17 @@ const createFilm = async (req: Request, res: Response) => {
 const updateFilmById = async (req: Request, res: Response) => {
   try {
     const filmId = req.params.id;
-    const film = await Film.findOne({ id: parseInt(filmId) });
+    const filmUpdated = await Film.findOneBy({ id: parseInt(filmId) });
 
-    if (!film) {
+    if (!filmUpdated) {
       return res.status(404).send("Película no encontrada");
     }
 
-    film.title = req.body.title;
-    film.director = req.body.director;
-    await film.save();
+    filmUpdated.title = req.body.title;
+    filmUpdated.director = req.body.director;
+    await filmUpdated.save();
 
-    return res.send(film);
+    return res.send(filmUpdated);
   } catch (error) {
     return res.send(error);
   }

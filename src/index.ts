@@ -3,7 +3,7 @@ import { routerFilms } from "./routes/filmsRoutes";
 import { AppDataSource } from "./routes/db";
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4001;
 
 app.use(express.json()) //middleware
 app.use("/films", routerFilms);
