@@ -5,9 +5,9 @@ const getFilms = async (req: Request, res: Response) => {
   try {
     const films = await Film.find();
 
-  return res.send(films);
+    return res.send(films);
   } catch (error) {
-    return res.send(error)
+    return res.send(error);
   }
 };
 
@@ -25,16 +25,43 @@ const createFilm = async (req: Request, res: Response) => {
   }
 };
 
-const updateFilmById = (req: Request, res: Response) => {
-  const filmsId = req.params.id;
+const updateFilmById = async (req: Request, res: Response) => {
+  try {
+    const filmId = req.params.id;
+    const film = await Film.findOne({ id: parseInt(filmId) });
 
-  return res.send("UPDATE FILM " + filmsId);
+    if (!film) {
+      return res.status(404).send("Película no encontrada");
+    }
+
+    film.title = req.body.title;
+    film.director = req.body.director;
+    await film.save();
+
+    return res.send(film);
+  } catch (error) {
+    return res.send(error);
+  }
 };
 
-const deleteFilmById = (req: Request, res: Response) => {
-  const filmsId = req.params.id;
 
-  return res.send("DELETE FILM " + filmsId);
+const deleteFilmById = async (req: Request, res: Response) => {
+  try {
+    const filmsIdtoDelete = req.params.id;
+    const filmDeleted = await Film.delete({
+      id: parseInt(filmsIdtoDelete),
+    });
+
+    if (filmDeleted.affected) {
+      return res.send(
+        "Se ha eliminado correctamente la peliculacon el id " + filmDeleted
+      );
+    }
+
+    return res.send("No se ha eliminado nada");
+  } catch (error) {
+    return res.send(error);
+  }
 };
 
 const getFilmsbyId = (req: Request, res: Response) => {
